@@ -98,7 +98,7 @@ export async function createTopic(
    //add เพิม่เอง 42 ใส่ใน try topic data slug
    const slugifiedName = result.data.name
    .trim()
-   .toLowerCase()
+//    .toLowerCase()
 
    //39- การจัดการฐานข้อมูลและ Error Handling
    let topic: Topic;

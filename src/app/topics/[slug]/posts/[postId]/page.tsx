@@ -1,6 +1,5 @@
 //49 เอาไฟล์เข้ามาเองไม่ได้พิม 
-//add useclient
-'use client';
+
 import Link from "next/link";
 import PostShow from "@/components/posts/post-show";
 import CommentList from "@/components/comments/comment-list";
@@ -23,11 +22,11 @@ interface PostShowPageProps {
 export default async function PostShowPage({ params }: PostShowPageProps) {
   
     const { slug, postId } = await params;
-
+    const decodedSlug = decodeURIComponent(slug);
   return (
     <div className="space-y-3">
       <Link className="underline decoration-solid" href={paths.topicShow(slug)}>
-        {"< "}Back to {slug}
+        {"< "}Back to {decodedSlug}
       </Link>
       <Suspense fallback={<PostShowLoading/>}>
         <PostShow postId={postId}/>
