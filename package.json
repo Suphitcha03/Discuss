@@ -4,13 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "dotenv -e .env.local -- next dev",
-
     "build": "prisma db push && next build",
     "start": "next start",
     "lint": "next lint",
     "prisma:migrate:local": "dotenv -e .env.local -- npx prisma migrate dev --schema=prisma/schema.prisma",
     "prisma:generate:local": "dotenv -e .env.local -- npx prisma generate --schema=prisma/schema.prisma",
-    "postinstall":"prisma generate",
+    "postinstall": "prisma generate",
     "start:db": "docker run --rm -p 5432:5432 -v postgres-data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=ILOVEALEX postgres:16"
   },
   "dependencies": {
@@ -20,7 +19,7 @@
     "@prisma/client": "6.2.1",
     "dotenv-cli": "^11.0.0",
     "framer-motion": "11.16.4",
-    "next": "15.1.4",
+    "next": "15.1.11",
     "next-auth": "^5.0.0-beta.32",
     "prisma": "6.2.1",
     "react": "19.0.0",
