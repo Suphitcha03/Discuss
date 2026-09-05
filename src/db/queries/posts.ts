@@ -29,8 +29,11 @@ export function fetchPostsBySearchTerm(term: string): Promise<PostWithData[]> {
 }
 
 export function fetchPostsByTopicSlug(slug: string): Promise<PostWithData[]> {
+    //add delete %20
+    const decodedSlug = decodeURIComponent(slug);
+    
     return db.post.findMany({
-        where: {topic: {slug:slug}},
+        where: {topic: {slug:decodedSlug}},
         //ใช้ตอบสนองสำหรับการโหลดของข้อมูล
         include: {
             topic: {select: {slug: true}},
