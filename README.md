@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -49,3 +50,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
  # 4. Register a new OAuth at GitHub amd add URL http://localhosr:3000
  # 5 npm install next-auth@beta @auth/prisma-adapter@latest ไม่งั้นไม่ผ่าน
  # 6 Thrird party  import {z} from 'zod;
+=======
+# Discuss
+>>>>>>> da298328b583469f7a6251b3245d0156060a4d61
