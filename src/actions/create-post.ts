@@ -1,0 +1,103 @@
+//18
+'use server';
+//45
+import type { Post } from "@prisma/client";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import {z} from 'zod';
+import {auth} from '@/auth';
+import {db} from '@/db';
+import paths from '@/paths';
+
+const createPostSchema = z.object({
+    title: z
+    .string()
+    .min(3)
+    //ต้องใส่เป๊ะๆแบบนี้นะ
+    .regex(/^[a-zA-Z0-9 ]+$/, {
+        message: 'Must contain only letters, numbers and spaces'
+    }),
+    content: z
+    .string()
+    .min(10)
+});
+interface CreatePostFormState{
+    errors: {
+        title?: string[],
+        content?: string[],
+        _form?: string[]
+    }
+}
+
+//46 add slug: string
+export async function createPost(
+    slug: string,
+    formState: CreatePostFormState,
+    formData: FormData
+) : Promise<CreatePostFormState> {
+
+    const result = createPostSchema.safeParse({
+        title: formData.get('title'),
+        content: formData.get('content')
+    });
+
+    if(!result.success) {
+        return{
+            errors: result.error.flatten().fieldErrors
+        }
+    }
+
+        //46 เพิ่มตรงนี้ 49
+    const session = await auth();
+    if(!session || !session.user || !session.user.id){
+        return{
+            errors: {
+                _form: ['You must be signed in to do this'],
+            },
+         };
+    }
+
+    const topic = await db.topic.findFirst({
+        where: {slug}
+    }) ;
+
+    if(!topic){
+        return{
+            errors:{
+                _form: ['Cannot find topic'],
+            },
+        };
+    }
+        let post: Post;
+       try{
+
+        post = await db.post.create({
+            data: {
+                title: result.data.title,
+                content: result.data.content,
+                userId: session.user.id,
+                topicId: topic.id
+            }
+        });
+
+       }catch(err: unknown){
+
+        if(err instanceof Error){
+            return{
+                errors: {
+                    _form: [err.message]
+                }
+            };
+        }else{
+            return{
+                errors: {
+                    _form: ['Failed to create post']
+                }
+            }
+        }
+    }
+    revalidatePath(paths.topicShow(slug));
+    redirect(paths.postShow(slug, post.id));
+
+}
+    //TODO revalidate the topic show page
