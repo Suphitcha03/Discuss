@@ -1,5 +1,5 @@
-//24
-
+//24 add client delete async
+'use client';
 import Link from 'next/link';
 import {
     Navbar,
@@ -20,7 +20,7 @@ import SearchInput from './search-input';
 
 import { Suspense } from 'react';
 
-export default async function Header(){
+export default  function Header(){
     //everypage เลยกลายเป็น Dynamic
     //const session = await auth();
 
