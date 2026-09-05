@@ -1,24 +1,16 @@
 
-//40
+//40 add client เพิ่ม run ไม่ผ่าน
 
-import Link from 'next/link';
-import {Chip} from '@nextui-org/react';
+import TopicChip from './topic-chip';
 import { db } from '@/db';
-import paths from '@/paths';
 
-export default async function TopicList(){
+
+export default  async function TopicList(){
     const topics = await db.topic.findMany();
 
     const renderTopics = topics.map((topic)=>{
-        return(
-            <div key={topic.id}>
-                <Link href={paths.topicShow(topic.slug)}>
-                    <Chip color="warning" variant="shadow">
-                        {topic.slug}
-                    </Chip>
-                </Link>
-            </div>
-        )
+        return <TopicChip key={topic.id} topic={topic}/>
+            
     })
 
     return <div className='flex flex-row flex-wrap gap-2'>
