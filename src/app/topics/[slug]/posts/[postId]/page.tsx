@@ -1,4 +1,6 @@
-//49 เอาไฟล์เข้ามาเองไม่ได้พิม
+//49 เอาไฟล์เข้ามาเองไม่ได้พิม 
+//add useclient
+'use client';
 import Link from "next/link";
 import PostShow from "@/components/posts/post-show";
 import CommentList from "@/components/comments/comment-list";
