@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-//2
 import Providers from "@/app/provider";
-//25
 import Header from "@/components/header";
 
 

@@ -1,5 +1,3 @@
-//21
-//7 เราแยก ล้อคเข้าล้อคออกละ
 'use server';
 
 import * as auth from '@/auth';

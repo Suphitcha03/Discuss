@@ -1,5 +1,3 @@
-//19
-
 'use server';
 
 import { revalidatePath } from 'next/cache';
@@ -50,7 +48,7 @@ export async function createComment(
         content: result.data.content,
         postId: postId,
         parentId: parentId,
-        userId: session.user.id!, //! บอก TypeScript ให้แน่ใจว่าค่านี้มีแน่นอนได้ทันที
+        userId: session.user.id!, 
       },
     });
   } catch (err: unknown) {
@@ -69,7 +67,6 @@ export async function createComment(
     }
   }
 
-  // รีเฟรชข้อมูลในหน้าดูโพสต์เพื่อให้คอมเมนต์ใหม่โผล่ขึ้นมาทันที
   const topic = await db.topic.findFirst({
     where: { posts: { some: { id: postId } } },
   });

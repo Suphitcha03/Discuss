@@ -6,12 +6,11 @@ export type PostWithData = (
     Post & {
         topic: { slug: string};
         user: { name: string | null};
-        //การใส่ _ นำหน้า ไม่ใช่กฎของ JavaScript หรือ TypeScript แต่เป็น สัญลักษณ์พิเศษของ Prisma เพื่อบอกว่า "ก้อนนี้คือผลรวมสถิติ/ตัวเลขนับจำนวนนะ"
         _count: {comments:number}
     }
 );
 
-//59 => import at app/search-page
+
 export function fetchPostsBySearchTerm(term: string): Promise<PostWithData[]> {
     return db.post.findMany({
         include: {
@@ -29,12 +28,10 @@ export function fetchPostsBySearchTerm(term: string): Promise<PostWithData[]> {
 }
 
 export function fetchPostsByTopicSlug(slug: string): Promise<PostWithData[]> {
-    //add delete %20
     const decodedSlug = decodeURIComponent(slug);
     
     return db.post.findMany({
         where: {topic: {slug:decodedSlug}},
-        //ใช้ตอบสนองสำหรับการโหลดของข้อมูล
         include: {
             topic: {select: {slug: true}},
             user: {select: {name: true}},
@@ -43,7 +40,6 @@ export function fetchPostsByTopicSlug(slug: string): Promise<PostWithData[]> {
     })
 }
 
-//56
 
 export function fetchTopPosts(): Promise<PostWithData[]> {
     return db.post.findMany({

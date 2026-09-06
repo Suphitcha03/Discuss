@@ -1,6 +1,4 @@
-//18
 'use server';
-//45
 import type { Post } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -13,7 +11,6 @@ const createPostSchema = z.object({
     title: z
     .string()
     .min(3)
-    //ต้องใส่เป๊ะๆแบบนี้นะ
     .regex(/^[a-zA-Z0-9 ]+$/, {
         message: 'Must contain only letters, numbers and spaces'
     }),
@@ -29,7 +26,7 @@ interface CreatePostFormState{
     }
 }
 
-//46 add slug: string
+
 export async function createPost(
     slug: string,
     formState: CreatePostFormState,
@@ -47,7 +44,7 @@ export async function createPost(
         }
     }
 
-        //46 เพิ่มตรงนี้ 49
+       
     const session = await auth();
     if(!session || !session.user || !session.user.id){
         return{
@@ -100,4 +97,4 @@ export async function createPost(
     redirect(paths.postShow(slug, post.id));
 
 }
-    //TODO revalidate the topic show page
+

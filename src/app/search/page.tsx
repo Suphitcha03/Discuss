@@ -1,4 +1,3 @@
-//59 60
 import PostList from "@/components/posts/post-list";
 import { redirect } from "next/navigation";
 import { fetchPostsBySearchTerm } from "@/db/queries/posts";

@@ -1,4 +1,3 @@
-//24 add client delete async
 'use client';
 import Link from 'next/link';
 import {
@@ -8,21 +7,12 @@ import {
     NavbarItem,
    
 } from '@nextui-org/react';
-
-//import {auth} from '@/auth';
-//26
-//import * as actions from '@/actions';
-//29
 import HeaderAuth from './header-auth';
-//57
 import SearchInput from './search-input';
-//61
-
 import { Suspense } from 'react';
 
-export default  function Header(){
-    //everypage เลยกลายเป็น Dynamic
-    //const session = await auth();
+
+export default function Header(){
 
     return(
         <Navbar className='shadow mb-6'>
@@ -32,7 +22,6 @@ export default  function Header(){
 
             <NavbarContent justify='center'>
                 <NavbarItem>
-                    {/* //57  61*/}
                     <Suspense>
                         <SearchInput/>
                     </Suspense>

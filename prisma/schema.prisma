@@ -1,11 +1,8 @@
-
-//3 npx prisma init --datasource-provider sqlite 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-            // sqlite
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
@@ -22,10 +19,8 @@ model Account {
   token_type        String?
   scope             String?
   id_token          String?
-  session_state     String? //NUll ได้
- // FOREIGN KEY (userId) REFERENCES User(id) ON DELETE CASCADE,
+  session_state     String? 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  //Compound Unique Index
   @@unique([provider, providerAccountId])
 }
 
@@ -34,7 +29,6 @@ model Session {
   sessionToken String   @unique //ห้ามซ้ำ
   userId       String
   expires      DateTime
-  // FOREIGN KEY (userId) REFERENCES User(id) ON DELETE CASCADE
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 

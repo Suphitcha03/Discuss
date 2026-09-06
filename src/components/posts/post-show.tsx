@@ -1,14 +1,12 @@
-
 import { notFound } from "next/navigation";
 import { db } from "@/db";
 
 interface PostShowProps {
-  //47
   postId: string
 }
 
 export default async function PostShow({ postId }: PostShowProps) {
-//54
+
    await new Promise(resolve => setTimeout(resolve,2500));
 
    

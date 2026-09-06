@@ -1,6 +1,3 @@
-
-//40 add client เพิ่ม run ไม่ผ่าน
-
 import TopicChip from './topic-chip';
 import { db } from '@/db';
 
@@ -10,7 +7,6 @@ export default  async function TopicList(){
 
     const renderTopics = topics.map((topic)=>{
         return <TopicChip key={topic.id} topic={topic}/>
-            
     })
 
     return <div className='flex flex-row flex-wrap gap-2'>

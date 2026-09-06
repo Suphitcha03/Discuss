@@ -1,11 +1,8 @@
-//5
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
-
-//Store list login
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import {db} from '@/db';
-//add new
+
 import Google from "next-auth/providers/google";
 
 const GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID;
@@ -27,8 +24,6 @@ export const {handlers: {GET,POST}, auth , signOut, signIn } = NextAuth({
         GitHub({
             clientId: GITHUB_CLIENT_ID,
             clientSecret: GITHUB_CLIENT_SECRET,
-            // เพิ่มบรรทัดนี้ลงไปเพื่อข้ามการตรวจ issuer mismatch บน localhos
-            // checks: ["none"],
         })
         ,
         Google({
@@ -37,7 +32,6 @@ export const {handlers: {GET,POST}, auth , signOut, signIn } = NextAuth({
         })
     ],
     callbacks: {
-        // Usually not needed, here we are fixing a bug in nextauth
         async session({session, user}){
             if (session && user) {
                 session.user.id = user.id;

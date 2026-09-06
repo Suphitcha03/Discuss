@@ -1,4 +1,3 @@
-//44
 'use client';
 import { useActionState } from "react";
 import {
@@ -12,7 +11,6 @@ import {
 import * as  actions from '@/actions';
 import FormButton from '@/components/common/form-button';
 
-//46
 interface PostCreateFromProps {
     slug: string;
 }
@@ -42,7 +40,6 @@ export default function PostCreateForm({slug}: PostCreateFromProps){
                         <h3 className="text-lg">Create a post</h3>
 
                         <Input
-                        // boolean
                             isInvalid ={!!formState.errors.title}
                             errorMessage={formState.errors.title?.join(', ')}
                             name="title"

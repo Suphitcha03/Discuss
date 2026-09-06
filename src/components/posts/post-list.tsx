@@ -1,9 +1,6 @@
 import Link from 'next/link';
 import paths from '@/paths';
-//46
 import type { PostWithData} from '@/db/queries/posts';
-
-//กำหนดว่าต้องรับ Prop ชื่อ fetchData
 interface PostListProps {
 
   fetchData: ()=> Promise<PostWithData[]>
@@ -11,12 +8,12 @@ interface PostListProps {
 }
 
 
-// TODO: Get list of posts into this component somehow
-export default async function PostList({fetchData} : PostListProps) {
-  //ตัวลูกเป็นคนกดเรียกฟังก์ชันนี้เอง เพื่อเอาข้อมูล Post ออกมาแปะลง HTML
-  const posts = await fetchData();
 
+export default async function PostList({fetchData} : PostListProps) {
+  
+  const posts = await fetchData();
   const renderedPosts = posts.map((post) => {
+    
     const topicSlug = post.topic.slug;
 
     if (!topicSlug) {

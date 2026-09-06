@@ -1,4 +1,3 @@
-//13
 const paths = {
 
     homePath(){

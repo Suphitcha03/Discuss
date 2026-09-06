@@ -1,5 +1,4 @@
-// src/components/topics/topic-chip.tsx
-'use client'; // กำหนดให้เป็น Client Component
+'use client'; 
 
 import Link from 'next/link';
 import { Chip } from '@nextui-org/react';
