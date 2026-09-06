@@ -48,8 +48,8 @@ export default function PostCreateForm({slug}: PostCreateFromProps){
                             placeholder="Title"/>
                         
                         <Textarea
-                        isInvalid ={!!formState.errors.title}
-                        errorMessage={formState.errors.title?.join(', ')}
+                        isInvalid ={!!formState.errors.content}
+                        errorMessage={formState.errors.content?.join(', ')}
                         name="content"
                         label="Content"
                         labelPlacement="outside"
