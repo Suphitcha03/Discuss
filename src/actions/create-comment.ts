@@ -50,7 +50,7 @@ export async function createComment(
         content: result.data.content,
         postId: postId,
         parentId: parentId,
-        userId: session.user.id!, //! บอก TypeScript ให้แน่ใจว่าค่านี้มีแน่นอนได้ทันทีครับ:
+        userId: session.user.id!, //! บอก TypeScript ให้แน่ใจว่าค่านี้มีแน่นอนได้ทันที
       },
     });
   } catch (err: unknown) {

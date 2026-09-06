@@ -4,7 +4,7 @@
 
 import * as auth from '@/auth';
 
-export async function signIn(){
-    return auth.signIn('github')
+export async function signIn(provider: 'github' | 'google'){
+    return auth.signIn(provider)
 }
 

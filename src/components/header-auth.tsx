@@ -13,7 +13,8 @@ import {
 
 import { useSession } from 'next-auth/react';
 import * as actions from '@/actions';
-
+//add new
+import { FaGithub,FaGoogle } from 'react-icons/fa';
 
 
 export default function HeaderAuth(){ //ประกาศ Component หลักชื่อ HeaderAuth สำหรับนำไปแปะไว้บนแถบ Header/Navbar ของเว็บไซต์
@@ -50,14 +51,25 @@ export default function HeaderAuth(){ //ประกาศ Component หลั�
         authContent = (
         <>
         <NavbarItem>
-            <form action={actions.signIn}>
-                <Button type='submit' color="secondary" variant="bordered">Sign In</Button>
+            <form action={()=> actions.signIn('github')}>
+                <Button type='submit' 
+                color="secondary" 
+                variant="bordered"
+                startContent={<FaGithub size={18}/>}>
+                Sign In with GitHub
+                </Button>
             </form>
         </NavbarItem>
 
         <NavbarItem>
-            <form action={actions.signIn}>
-               <Button type='submit' color="primary" variant='flat'> Sign up</Button>
+            <form action={()=> actions.signIn('google')}>
+               <Button 
+               type='submit' 
+               color="primary" 
+               variant='flat'
+               startContent={<FaGoogle size={18}/>}>
+                Sign In with Google
+                </Button>
             </form>
         </NavbarItem>
 
