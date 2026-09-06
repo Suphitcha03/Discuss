@@ -233,7 +233,13 @@ Disscuss/
 │
 ├── public/
 │   ├── screenshots/
-│   │   └── (ใส่ไฟล์รูปที่ใช้ใน README ตรงนี้)
+│   │   ├── home.png
+│   │   ├── topic.png
+│   │   ├── post-comments.png
+│   │   ├── create-topic.png
+│   │   ├── sign-in.png
+│   │   ├── search.png
+│   │   └── skeleton.png
 │   └── Static assets
 │
 ├── package.json
