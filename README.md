@@ -48,7 +48,7 @@ Authenticated users can:
 The user's profile image is displayed after successful authentication.
 
 <!-- ใส่รูปหน้า Sign in (ปุ่ม GitHub/Google) ตรงนี้ -->
-![Sign in](/screenshots/sign-in.png)
+![Sign in](./public/screenshots/sign-in.png)
 
 ---
 
